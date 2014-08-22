@@ -14,9 +14,7 @@ var $mapHelp = $("#map-help");
 var $endorseHelp = $("#endorsement-process");
 
 $(document).ready( function() {
-  var defaultText =$("#template-default-text").html();
   var sourcebox = $("#senate-template-infobox").html();
-  var endorseText = $("#template-endorse-text").html();
   app.infoboxTemplate = Handlebars.compile(sourcebox);
 //  app.defaultTemplate = Handlebars.compile(defaultText);
 //  app.endorseTemplate = Handlebars.compile(endorseText);
