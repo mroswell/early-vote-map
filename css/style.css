@@ -74,13 +74,16 @@ button {font: bold 0.9em arial,verdana,helvetica,sans-serif;}
     background-color: #b7dbff; /*rgb(26,150,65); /*#011734; /*#cc3333;/* #0678be;/*#A6D96A;*/
     color:black;
     margin-top: .6em;
-    margin-bottom: .8em;
+    margin-bottom: .4em;
 }
 .entry-header p {
     margin-bottom: 0;
 }
 
-p.info-title {font-size: 120%;}
+p.info-title {
+    font-size: 120%;
+    margin-bottom: 5px;
+}
 .entry-infobox img {border: red 1px; display:block;  text-align: center;}
 
 h2 {

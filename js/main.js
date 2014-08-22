@@ -4,8 +4,8 @@ var frozenDist;
 var twoClicksAgo;
 var freeze=0;
 var Layer;
-var latitude = 37.5; //38.82;
-var longitude = -97; // -77.28;
+var latitude = 37.5;
+var longitude = -97;
 var latLng = new L.LatLng(latitude, longitude);
 var map = L.map('map')
   .setView(latLng, 4);
@@ -23,7 +23,7 @@ $(document).ready( function() {
     var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0Ao3Ts9D8bHHpdDI2bm1NTUMwSC14T19mQlB6VkZDaWc&output=html';
   Tabletop.init( { key: public_spreadsheet_url,
     callback: showInfo,
-    parseNumbers: true } );
+    parseNumbers: false } );
 });
 
 function showInfo(data, tabletop) {
@@ -45,9 +45,6 @@ function getColor(score) {
 
 var geoStyle = function(data) {
   var statename = data.properties.name;
-  console.log("statename", statename);
-  console.log("States", States);
-  console.log(States[statename]);
   var fillColor = getColor(States[statename].colorcategory.toString());
 
   return {
@@ -85,8 +82,8 @@ function loadGeo(district) {
 function onEachFeature(feature, layer) {
   layer.on({
     mouseover: highlightFeature,
-    mouseout: resetHighlight
-//    click: mapMemberDetailClick,
+    mouseout: resetHighlight,
+//    click: mapMemberDetailClick
 //    dblclick: mapDblClick
   });
 }
@@ -94,7 +91,6 @@ function onEachFeature(feature, layer) {
 function highlightFeature(e) {
   var layer = e.target;
   var districtNumber = layer.feature.properties.name;
-  districtNumber = districtNumber.replace(/^0+/, '');
   var memberDetail = States[districtNumber];
   if(!memberDetail){
     return;
@@ -186,7 +182,6 @@ function memberDetailFunction(districtNumber){
 function mapDblClick(e) {
   var layer = e.target;
   var districtNumber = layer.feature.properties.name;
-  districtNumber = districtNumber.replace(/^0+/, '');
   var bbox = layer.getBounds();
   map.fitBounds(bbox);
   layer.setStyle({
